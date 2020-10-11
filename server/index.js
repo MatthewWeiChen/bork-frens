@@ -424,14 +424,7 @@ app.get('/api/users/find-frens/list/:location/:userId', (req, res, next) => {
         });
         return;
       }
-      const totalUsers = `
-    select count(DISTINCT location) as "numberOfUsers"
-      from "users"
-      `;
-      return db.query(totalUsers).then(total => {
-        return userInfo.rows;
-      });
-
+      return userInfo.rows;
     })
     .then(result => res.json(result))
     .catch(err => next(err));
