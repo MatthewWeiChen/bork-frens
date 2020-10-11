@@ -31,13 +31,14 @@ class Homepage extends React.Component {
   }
 
   handleChange() {
-    const dateFormat = this.state.userProfile.DOB;
+    let newState = {};
+    newState = Object.assign(newState, this.state.userProfile);
+    const dateFormat = newState.DOB;
     const format = dateFormat.substr(0, 10);
-    const insert = this.state.userProfile;
-    insert.DOB = format;
+    newState.DOB = format;
     this.props.setView(
       'editUserProfile',
-      this.state.userProfile
+      newState
     );
   }
 
